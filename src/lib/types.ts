@@ -12,6 +12,7 @@ import {
   _getTicketsWithAllRelations,
   getAuthUserDetails,
   getMedia,
+  getFunnels,
   getPipelineDetails,
   getTicketsWithTags,
   getUserPermissions,
@@ -19,7 +20,7 @@ import {
 import { db } from "./db";
 import { z } from "zod";
 
-import Stripe from 'stripe'
+import Stripe from "stripe";
 
 export type NotificationWithUser =
   | ({
@@ -131,15 +132,20 @@ export type PipelineDetailsWithLanesCardsTagsTickets = Prisma.PromiseReturnType<
   typeof getPipelineDetails
 >;
 
-
 export type TicketDetails = Prisma.PromiseReturnType<
   typeof _getTicketsWithAllRelations
->
+>;
 
-export type PricesList = Stripe.ApiList<Stripe.Price>
-
-export type UpsertFunnelPage = Prisma.FunnelPageCreateWithoutFunnelInput;
+export type PricesList = Stripe.ApiList<Stripe.Price>;
 
 export type GetMediaFiles = Prisma.PromiseReturnType<typeof getMedia>;
 
-export type TicketWithTags = Prisma.PromiseReturnType<typeof getTicketsWithTags>
+export type TicketWithTags = Prisma.PromiseReturnType<
+  typeof getTicketsWithTags
+>;
+
+export type FunnelsForSubAccount = Prisma.PromiseReturnType<
+  typeof getFunnels
+>[0];
+
+export type UpsertFunnelPage = Prisma.FunnelPageCreateWithoutFunnelInput;
