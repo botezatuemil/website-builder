@@ -5,6 +5,7 @@ import Navigation from "@/components/site/navigation";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import ModalProvider from "@/providers/modal-provider";
+import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 
 const font = DM_Sans({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
           <ModalProvider>
             {children}
             <Toaster />
+            <SonnerToaster position="bottom-left" />
           </ModalProvider>
         </ThemeProvider>
       </body>
