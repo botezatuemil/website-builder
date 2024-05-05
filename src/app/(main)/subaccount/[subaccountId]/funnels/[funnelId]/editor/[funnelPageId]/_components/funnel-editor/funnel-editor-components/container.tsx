@@ -20,41 +20,137 @@ const Container = ({ element }: Props) => {
     e.stopPropagation();
     const componentType = e.dataTransfer.getData("componentType") as EditorBtns;
     switch (componentType) {
-      case "text":
+      case 'text':
         dispatch({
-          type: "ADD_ELEMENT",
+          type: 'ADD_ELEMENT',
           payload: {
             containerId: id,
             elementDetails: {
-              content: { innerText: "Text Element" },
+              content: { innerText: 'Text Element' },
               id: v4(),
-              name: "Text",
+              name: 'Text',
               styles: {
-                color: "black",
+                color: 'black',
                 ...defaultStyles,
               },
-              type: "text",
+              type: 'text',
             },
           },
-        });
-        break;
-      case "container":
+        })
+        break
+      case 'link':
         dispatch({
-          type: "ADD_ELEMENT",
+          type: 'ADD_ELEMENT',
+          payload: {
+            containerId: id,
+            elementDetails: {
+              content: {
+                innerText: 'Link Element',
+                href: '#',
+              },
+              id: v4(),
+              name: 'Link',
+              styles: {
+                color: 'black',
+                ...defaultStyles,
+              },
+              type: 'link',
+            },
+          },
+        })
+        break
+      case 'video':
+        dispatch({
+          type: 'ADD_ELEMENT',
+          payload: {
+            containerId: id,
+            elementDetails: {
+              content: {
+                src: 'https://www.youtube.com/embed/A3l6YYkXzzg?si=zbcCeWcpq7Cwf8W1',
+              },
+              id: v4(),
+              name: 'Video',
+              styles: {},
+              type: 'video',
+            },
+          },
+        })
+        break
+      case 'container':
+        dispatch({
+          type: 'ADD_ELEMENT',
           payload: {
             containerId: id,
             elementDetails: {
               content: [],
               id: v4(),
-              name: "Container",
+              name: 'Container',
               styles: { ...defaultStyles },
-              type: "container",
+              type: 'container',
             },
           },
-        });
-        break;
-      default:
-        break;
+        })
+        break
+      case 'contactForm':
+        dispatch({
+          type: 'ADD_ELEMENT',
+          payload: {
+            containerId: id,
+            elementDetails: {
+              content: [],
+              id: v4(),
+              name: 'Contact Form',
+              styles: {},
+              type: 'contactForm',
+            },
+          },
+        })
+        break
+      case 'paymentForm':
+        dispatch({
+          type: 'ADD_ELEMENT',
+          payload: {
+            containerId: id,
+            elementDetails: {
+              content: [],
+              id: v4(),
+              name: 'Contact Form',
+              styles: {},
+              type: 'paymentForm',
+            },
+          },
+        })
+        break
+      case '2Col':
+        dispatch({
+          type: 'ADD_ELEMENT',
+          payload: {
+            containerId: id,
+            elementDetails: {
+              content: [
+                {
+                  content: [],
+                  id: v4(),
+                  name: 'Container',
+                  styles: { ...defaultStyles, width: '100%' },
+                  type: 'container',
+                },
+                {
+                  content: [],
+                  id: v4(),
+                  name: 'Container',
+                  styles: { ...defaultStyles, width: '100%' },
+                  type: 'container',
+                },
+              ],
+              id: v4(),
+              name: 'Two Columns',
+              styles: { ...defaultStyles, display: 'flex' },
+              type: '2Col',
+            },
+          },
+        })
+        break
     }
   };
 
